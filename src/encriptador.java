@@ -1,20 +1,22 @@
-import java.io.*;
-public class encriptador{
-  public static void main(String[]args)throws IOException{
-    InputStreamReader isr=new InputStreamReader(System.in);
-    BufferedReader br=new BufferedReader(isr);
-    BufferedWriter bw = new BufferedWriter( new OutputStreamWriter(System.out));
-    String mensaje=br.readLine();      //mensaje original
-    mensaje=mensaje.toLowerCase();     //cambiar mayusculas por minusculas
+import java.io.*;   //import all the packages for some data for the program
+public class Encriptador{   //define the data and the conduct of all the type that this program
+  public static void main(String[]args)throws IOException{  //define various methods for start the program
+    InputStreamReader isr=new InputStreamReader(System.in); //recognize of the source
+    BufferedReader br=new BufferedReader(isr); //allow read a complete line
+    BufferedWriter bw = new BufferedWriter( new OutputStreamWriter(System.out)); //well as the reader can write a complete line like an enter
+    String mensaje=br.readLine();      //create the variable of the message called mensaje
+    mensaje=mensaje.toLowerCase();     //change to uppercase to lowercase of the message
 
-    int[]cons=new int[23];             //variables para incriptacion de consonantes
-    for(int w=1; w<22; w++)
-       cons[w]=w;
-       
-    for(int g=1; g<23; g++)            //incriptador de consonantes                                      
-        cons[g]=cons[g]+1;             //¡¡¡¡¡¡¡¡FUNCION!!!!!!! 
-   
-    mensaje=mensaje.replace("b","1010");//cambiar consonantes por valores numericos unicos para manipulacion
+    int[]cons=new int[23];             //create variable of the consonants
+    for(int w=1; w<22; w++) {            //create a cicle for to the consonants
+       cons[w]=w;                       //create in other variable for save the cicle for
+    }
+    
+    for(int g=1; g<23; g++){            //start to encript with for                                    
+        cons[g]=cons[g]+1;             //that function is to start to encript
+    }
+    
+    mensaje=mensaje.replace("b","1010");//change characters to integer that can recognize
     mensaje=mensaje.replace("c","1020");
     mensaje=mensaje.replace("d","1030");
     mensaje=mensaje.replace("f","1040");
@@ -25,7 +27,7 @@ public class encriptador{
     mensaje=mensaje.replace("l","1090");
     mensaje=mensaje.replace("m","1100");
     mensaje=mensaje.replace("n","1110");
-    mensaje=mensaje.replace("ñ","1120");
+    mensaje=mensaje.replace("Ã±","1120");
     mensaje=mensaje.replace("p","1130");
     mensaje=mensaje.replace("q","1140");
     mensaje=mensaje.replace("r","1150");
@@ -40,9 +42,9 @@ public class encriptador{
     int val=1010;
     String va;
   
-    for(int z=1; z<22; z++)             //reemplaza consonates 
+    for(int z=1; z<22; z++)             //create other cicle for to the vowels
        {
-        if(cons[z]==1 || cons[z]==23 || cons[z]==45 || cons[z]==67 )
+        if(cons[z]==1 || cons[z]==23 || cons[z]==45 || cons[z]==67 ) // create a cicle if for remplace to character
           {
            va=Integer.toString(val);
            mensaje=mensaje.replace(va,"b");
@@ -133,7 +135,7 @@ public class encriptador{
                                          if(cons[z]==12 || cons[z]==34 || cons[z]==56 || cons[z]==78)
                                            {
                                             va=Integer.toString(val);
-                                            mensaje=mensaje.replace(va,"ñ");
+                                            mensaje=mensaje.replace(va,"Ã±");
                                             val=val+10;
                                            }
                                          else
@@ -240,12 +242,12 @@ public class encriptador{
        }
                        
 
-    mensaje=mensaje.replace("a","4");  //cambiar vocales por numeros
+    mensaje=mensaje.replace("a","4");  //change the vowels for numbers
     mensaje=mensaje.replace("e","3");
     mensaje=mensaje.replace("i","1");
     mensaje=mensaje.replace("o","0");
     mensaje=mensaje.replace("u","9");
-    int[] funcion=new int[5];          //variables para incriptacion de vocales   
+    int[] funcion=new int[5];          //create variable for start the function to numbers  
     funcion[0]=4;
     funcion[1]=3;   
     funcion[2]=1;
@@ -253,18 +255,18 @@ public class encriptador{
     funcion[4]=9;     
     String[] fun=new String[5];       
     
-    for(int i = 0; i<5; i++)           //encriptador de vocales      
+    for(int i = 0; i<5; i++)           //with this cicle for start the function   
        {
-        funcion[i]=funcion[i]+1;       //¡¡¡¡¡¡¡¡FUNCION!!!!!!!
+        funcion[i]=funcion[i]+1;       //this is the function that change the vowels
         fun[i]=Integer.toString(funcion[i]);
        }
-    mensaje=mensaje.replace("4",fun[0]);//reemplazar numeros corregspondientes a numeros incriptados(vocales)
+    mensaje=mensaje.replace("4",fun[0]);//replace the numbers with the function to can print the message
     mensaje=mensaje.replace("3",fun[1]);
     mensaje=mensaje.replace("1",fun[2]);
     mensaje=mensaje.replace("0",fun[3]);
     mensaje=mensaje.replace("9",fun[4]);
     
-    bw.write(mensaje + "\n");
-    bw.flush();    
+    bw.write(mensaje + "\n"); //print the message encript
+    bw.flush();    //send all the information
   }
 }
